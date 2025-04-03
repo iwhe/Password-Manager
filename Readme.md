@@ -1,54 +1,73 @@
-## Share Password
+## Features for v1
+<ol>
+    <li>Two Factor Authentication with TOTP</li>
+    <li>Create Password you would like to store and share</li>
+    <li>Generate Random Password</li>
+    <li>Store Password </li>
+    <li>Share Password with access control among colleagues who use the platform</li>
+    <li>Edit stored password</li>
+    <li>Delete Password</li>
+</ol>
 
-### Frontend:::::::
-Sharing Password
-1. User click on share
-2. Ask for user email to whom password is to be shared
-3. Permission
-3. API hits with password Id, user owner id, user shared with id, permission.
-..............
-4. Gets back response and notify user based on that 
+## Tech Stack Used
+### Frontend Development
+<ul>
+    <li>Vue.js</li>
+    <li>Tailwind CSS</li>
+</ul>
 
-### Backend::::::::
-1. Get password Id, user owner id, user shared with id, and permission as a request.
+### Backend Development
+<ul>
+    <li>Node.js</li>
+</ul>
+
+### Database Management
+<ul>
+    <li>MongoDB</li>
+</ul>
+
+### API Testing
+<ul>
+    <li>Postman</li>
+</ul>
+
+## Execution of share password
+### Share Password
+
+#### Frontend:
+1. User clicks on share
+2. Ask the user to search for the user with an email
+3. Displays a list of users that matches with searched query.
+4. The user clicks on the 'Share' button along with the person they want to share with.
+5. Asks for permission.
+6. API hits with password ID, password owner ID, sharedUserID, and permission.
+7. .............. backend ..............
+8. Gets back response and notifies user based on that 
+
+#### Backend:
+1. Get password ID, password owner ID, sharedUserID, and permission as a request.
 2. Check password
-3. Check if user owner id and user shared with id are same or not.
-4. If not same then store the data in db.
+3. Check if the user owner id and user shared with id are same or not.
+4. If not the same then store the data in the sharedPassword model in db.
 5. Response
-6. 
 
-## Displaying Shared Password
-### Frontend::
-1. User click on Shared Passwords section
-2. API hits with user id 
-.........
-3. Display list of share password with just site details.
-4. When Opened/Clicked, Display password and trigger accessed model for viewed, 
-5. if user has edit permission and make the edit successfully, then trigger edit model.
+### Displaying Shared Password
+#### Frontend:
+1. User clicks on Shared Passwords section
+2. API hits with user ID
+3. .........backend .....
+4. Display a list of shared passwords with just site details.
+5. When Opened/Clicked, Display the password with full details. 
+6. if user has edit permission and make the edit successfully, then trigger edit model.
 
-### Backend::
-1. Request with user id and search for user in sharePassword model.
-2. If user is found then check for permissions and check password details in password model with passwordId, and 
+#### Backend:
+1. Request with userID and search for the user ({ sharedWith: userId }) in the sharePassword model.
+2. If data with the respective userID is found, then retrieve list of data along with permission in response
 3. Response back
+4. ......
+5. If user wants to access on any of the shared password, then look for a password detail with its ID in the Password model and retrieve it back in response.
 
 
-Your Passwords | Shared Passwords
+##### "Your Passwords | Shared Passwords" are the primary tabs on our home page which can be accessed easily by just switching tabs for respective data.
 
-
-{
-    "statusCode": 201,
-    "data": {
-        "password": "675a706bd6f8b12ad143517e",
-        "owner": "6757d09fe80a2bd990d95a07",
-        "sharedWith": "67518dbd3c4c077dfe7ccf6a // bhupesh@gmail.commmm
-
-        "permission": "View",
-        "_id": "675ec6377a568b267ad585ab",
-        "createdAt": "2024-12-15T12:06:15.353Z",
-        "updatedAt": "2024-12-15T12:06:15.353Z",
-        "__v": 0
-    },
-    "message": "Shared Password stored successfully",
-    "success": true
-}
 
