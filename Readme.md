@@ -1,4 +1,4 @@
-## Features for v1
+## Features
 <ol>
     <li>Two Factor Authentication with TOTP</li>
     <li>Create Password you would like to store and share</li>
